@@ -1,0 +1,33 @@
+// Count the Occurences of characters in a string using Dictionary
+string str = "SupriyaaauprisssS";
+    Dictionary<char , int> charCount = new Dictionary<char,int>();
+    foreach(char ch in str)
+    {
+        if(charCount.ContainsKey(ch))
+        {
+            charCount[ch]++;
+        }
+        else
+        {
+            charCount[ch]=1;
+        }
+    }
+      foreach(var item in charCount)
+      {
+          Console.WriteLine(item.Key+"--"+Item.Value);
+      }
+
+---------------------------------------------------
+var result = str.GroupBy(s=>s).Select(g=> new{character = g.Key , count = g.Count()});
+    var result2 = (from c in str
+                    group c by c into chargroup
+                    select new {
+                       character= chargroup.Key,
+                        count=chargroup.Count()
+                    }).ToList();
+    
+    Console.WriteLine(result2);
+    foreach(var item in result2)
+    {
+      Console.WriteLine(item.character+"--"+item.count);
+    }
