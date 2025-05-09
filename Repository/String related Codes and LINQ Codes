@@ -31,3 +31,33 @@ var result = str.GroupBy(s=>s).Select(g=> new{character = g.Key , count = g.Coun
     {
       Console.WriteLine(item.character+"--"+item.count);
     }
+
+========================================================
+//Distinct Characters in the string
+ string distinct = new String(str.Distinct().ToArray());
+    Console.WriteLine(distinct);
+---------------------------------
+var result2 = (from c in str
+                    group c by c into chargroup
+                    select new {
+                      character= chargroup.Key
+                    }).ToList();
+    foreach(var item in result2)
+    {
+      Console.WriteLine(item.character);
+    }
+======================================================
+//To get the even numbers filters 
+ int[] numbers = {2,1,6,4,5,7};
+    var result = numbers.Where(n=> n%2==0).Select(n=>n*n);
+    foreach(var n in result)
+    {
+        Console.WriteLine(n);
+    }
+ Console.WriteLine(numbers.Max());
+ Console.WriteLine(numbers.Min());
+====================================
+ string str = "SupriyaaauprisssS";
+    char ch = 'p';
+    var result = str.Contains(ch);
+    Console.WriteLine(result);
